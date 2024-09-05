@@ -6,9 +6,13 @@ import DashboardPage from "./pages/DashboardPage";
 import OrdersPage from "./pages/OrdersPage";
 import ProductsPage from "./pages/ProductsPage";
 import UsersPage from "./pages/UsersPage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 function App() {
   return (
     <div className="App">
+      <Navbar/>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
@@ -17,6 +21,7 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/users" element={<UsersPage />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }
