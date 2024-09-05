@@ -1,17 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { EditProductModal } from '../components/EditProductModal';
 import Table from '../components/Table';
+import useFetchProducts from '../hooks/useFetchProducts';
 
 export const ProductsPage = () => {
-  const [products, setProducts] = useState([]);
+  const { products, error, loading, deleteProduct, updateProduct } = useFetchProducts();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    fetch('https://dummyjson.com/products')
-      .then(response => response.json())
-      .then(data => setProducts(data.products));
-  }, []);
 
   const handleEdit = (product) => {
     setSelectedProduct(product);
@@ -19,15 +14,18 @@ export const ProductsPage = () => {
   };
 
   const handleDelete = (id) => {
-    setProducts(products.filter(product => product.id !== id));
+    deleteProduct(id);
   };
 
   const handleSave = (updatedProduct) => {
-    setProducts(products.map(product => product.id === updatedProduct.id ? updatedProduct : product));
+    updateProduct(updatedProduct);
     setIsModalOpen(false);
   };
 
   const headers = ["title", "price", "description", "category", "images"];
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="container mx-auto p-4">
