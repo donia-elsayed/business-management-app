@@ -3,16 +3,12 @@ import { TrashIcon, PencilSquareIcon } from "@heroicons/react/20/solid";
 
 const Table = ({ headers, data, onEdit, onDelete, onToggleBlock }) => {
   const allHeaders = [...headers, "Actions"];
+
   return (
-    <div className=" flex justify-center items-center overflow-x-auto my-10">
-      <table className="max-w-2xl divide-y divide-gray-200">
+    <div className="overflow-x-auto my-10">
+      <table className="max-w-2xl divide-y m-auto divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            {data[0].image && (
-              <th className="px-6 py-3 text-gray-500 text-left text-lg font-medium">
-                Image
-              </th>
-            )}
             {allHeaders.map((header) => (
               <th
                 key={header}
@@ -23,27 +19,30 @@ const Table = ({ headers, data, onEdit, onDelete, onToggleBlock }) => {
             ))}
           </tr>
         </thead>
+
         <tbody className="bg-white divide-y divide-gray-200">
           {data.map((item) => (
             <tr key={item.id}>
-              {item.image && (
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="h-15 w-15 object-cover rounded"
-                  />
-                </td>
-              )}
               {headers.map((header) => (
                 <td
                   key={header}
                   className="px-6 py-4 whitespace-nowrap text-base"
                 >
-                  {item[header]}
+                  {header === "images"
+                    ? (
+                      <img
+                        src={item.images[0]}
+                        alt={item.title}
+                        className="h-15 w-15 object-cover rounded"
+                      />
+                    )
+                    : header === "description"
+                      ? `${item[header].slice(0, 60)}...`
+                      : item[header]}
                 </td>
               ))}
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+
+              <td className="px-6 py-4 whitespace-wrap text-sm font-medium">
                 <div className="flex space-x-2">
                   {onEdit && (
                     <button
