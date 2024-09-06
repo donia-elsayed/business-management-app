@@ -6,10 +6,15 @@ import { toast } from 'react-hot-toast';
 
 const RegisterPage = () => {
   const handleSubmit = (values, { resetForm }) => {
-    toast.success('Registration successful!');
-    console.log(JSON.stringify(values, null, 2)); // Logging to the console instead of alert
+    const existingUser = JSON.parse(localStorage.getItem('user'));
 
-    resetForm();
+    if (existingUser && existingUser.email === values.email) {
+      toast.error('User already exists with this email!');
+    } else {
+      localStorage.setItem('user', JSON.stringify(values));
+      toast.success('Registration successful!');
+      resetForm();
+    }
   };
 
   const RegisterSchema = Yup.object({
@@ -39,13 +44,9 @@ const RegisterPage = () => {
           >
             {({ isSubmitting, errors, touched }) => (
               <Form className="space-y-6">
-                <h2 className="text-center text-3xl font-extrabold text-gray-900">
-                  Register
-                </h2>
+                <h2 className="text-center text-3xl font-extrabold text-gray-900">Register</h2>
                 <div>
-                  <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                    Username*
-                  </label>
+                  <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username*</label>
                   <div className="mt-1">
                     <Field
                       type="text"
@@ -59,9 +60,7 @@ const RegisterPage = () => {
                   <ErrorMessage name="username" component="div" className="mt-2 text-sm text-red-600" />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                    Email address*
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address*</label>
                   <div className="mt-1">
                     <Field
                       type="email"
@@ -75,9 +74,7 @@ const RegisterPage = () => {
                   <ErrorMessage name="email" component="div" className="mt-2 text-sm text-red-600" />
                 </div>
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                    Password*
-                  </label>
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password*</label>
                   <div className="mt-1">
                     <Field
                       type="password"
@@ -91,9 +88,7 @@ const RegisterPage = () => {
                   <ErrorMessage name="password" component="div" className="mt-2 text-sm text-red-600" />
                 </div>
                 <div>
-                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                    Confirm Password*
-                  </label>
+                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm Password*</label>
                   <div className="mt-1">
                     <Field
                       type="password"
