@@ -31,7 +31,7 @@ const Footer = () => {
   });
 
   return (
-    <footer className="bg-gradient-to-l from-[#0072ff] to-[#00c6ff] text-white py-8 border-t-2 border-white">
+    <footer className="bg-gradient-to-l from-[#0072ff] to-[#00c6ff] text-white py-8 border-t-[0.5px] border-gray-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
