@@ -18,7 +18,7 @@ const NewProduct = () => {
     <div className="p-6">
       <button
         onClick={openModal}
-        className="mb-4 inline-flex justify-center py-2 px-4  text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-500 "
+        className="mb-4 inline-flex justify-center py-2 px-4  text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-400"
       >
         Create New Product
       </button>
