@@ -13,7 +13,7 @@ const useFetchProducts = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          "https://dummyjson.com/products?limit=10&skip=77"
+          "https://dummyjson.com/products?limit=20&skip=77"
         );
         const data = await response.json();
         const storedProducts = localStorage.getItem("products");
@@ -32,21 +32,7 @@ const useFetchProducts = () => {
     }
   }, [products]);
 
-  const deleteProduct = (id) => {
-    const updatedProducts = products.filter((product) => product.id !== id);
-    setProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
-  };
-
-  const updateProduct = (updatedProduct) => {
-    const updatedProducts = products.map((product) =>
-      product.id === updatedProduct.id ? updatedProduct : product
-    );
-    setProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
-  };
-
-  return { products, error, loading, deleteProduct, updateProduct };
+  return { products, error, loading };
 };
 
 export default useFetchProducts;
