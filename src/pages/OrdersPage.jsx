@@ -13,12 +13,12 @@ import { useModal } from "../hooks/useModal";
 const OrdersPage = () => {
   const headers = [
     "id",
-    "productName",
+    "product",
     "quantity",
     "pricePerUnit",
     "totalPrice",
     "status",
-    "customerName",
+    "customer",
     "orderDate",
   ];
   const [orders, setOrders] = useState(() => {
