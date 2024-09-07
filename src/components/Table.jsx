@@ -1,14 +1,16 @@
 import React from "react";
 import { TrashIcon, PencilSquareIcon } from "@heroicons/react/20/solid";
+import { getStatusClasses } from "../utitlities/statusStyles";
 
 const Table = ({ headers, data, onEdit, onDelete, onToggleBlock }) => {
+  const hasImage = data[0]?.image;
   const allHeaders = [...headers, "Actions"];
   return (
-    <div className=" flex justify-center items-center overflow-x-auto my-10">
+    <div className="flex justify-center items-center overflow-x-auto my-10">
       <table className="max-w-2xl divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            {data[0].image && (
+            {hasImage && (
               <th className="px-6 py-3 text-gray-500 text-left text-lg font-medium">
                 Image
               </th>
@@ -26,11 +28,11 @@ const Table = ({ headers, data, onEdit, onDelete, onToggleBlock }) => {
         <tbody className="bg-white divide-y divide-gray-200">
           {data.map((item) => (
             <tr key={item.id}>
-              {item.image && (
+              {hasImage && (
                 <td className="px-6 py-4 whitespace-nowrap">
                   <img
                     src={item.image}
-                    alt={item.name}
+                    alt={item.name || "Product Image"}
                     className="h-15 w-15 object-cover rounded"
                   />
                 </td>
@@ -40,7 +42,13 @@ const Table = ({ headers, data, onEdit, onDelete, onToggleBlock }) => {
                   key={header}
                   className="px-6 py-4 whitespace-nowrap text-base"
                 >
-                  {item[header]}
+                  <span
+                    className={`${
+                      header === "status" ? getStatusClasses(item[header]) : ""
+                    } px-3 py-2 rounded-full`}
+                  >
+                    {item[header]}
+                  </span>
                 </td>
               ))}
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
