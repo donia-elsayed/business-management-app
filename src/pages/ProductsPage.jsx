@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { EditProductModal } from '../components/EditProductModal';
 import Table from '../components/Table';
 import {useFetchProducts} from '../hooks/useFetchProducts';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 
 
