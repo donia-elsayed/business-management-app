@@ -6,43 +6,19 @@ import DashboardPage from "./pages/DashboardPage";
 import OrdersPage from "./pages/OrdersPage";
 import ProductsPage from "./pages/ProductsPage";
 import UsersPage from "./pages/UsersPage";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Sidebar from "./components/Sidebar";
+import AuthProvider from "./components/AuthProvider";
 
 function App() {
   const isLoggedIn = true;
-  // localStorage.getItem("isLoggedIn") === "true";
-
-  const Layout = ({ children }) => (
-    <>
-      <Navbar />
-      <div className="flex flex-1">
-        <Sidebar />
-        <div className="flex-1">{children}</div>
-      </div>
-      <Footer />
-    </>
-  );
-
-  const AuthLayout = ({ children }) => (
-    <>
-      <Navbar />
-      <div className="flex flex-1 justify-center items-center">
-        {children}
-      </div>
-      <Footer />
-    </>
-  );
 
   return (
     <div className="App">
       <Routes>
-        <Route path="/login" element={<AuthLayout><LoginPage /></AuthLayout>} />
-        <Route path="/register" element={<AuthLayout><RegisterPage /></AuthLayout>} />
-        <Route path="/" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+        <Route path="/login" element={<AuthProvider isLoggedIn={false}><LoginPage /></AuthProvider>} />
+        <Route path="/register" element={<AuthProvider isLoggedIn={false}><RegisterPage /></AuthProvider>} />
+        <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
         {isLoggedIn && (
-          <Route path="*" element={<Layout />}>
+          <Route path="*" element={<AuthProvider isLoggedIn={true} />}>
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="products" element={<ProductsPage />} />
             <Route path="orders" element={<OrdersPage />} />
