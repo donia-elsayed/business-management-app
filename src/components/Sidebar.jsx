@@ -13,16 +13,16 @@ const Sidebar = () => {
         </button>
       </div>
       <div className={`md:flex flex-col md:w-64 w-full ${isOpen ? 'block' : 'hidden'} md:block`}>
-        <Link to="/dashboard" className="flex items-center p-4 hover:bg-white hover:text-[#0072ff] border-b border-white">
+        <Link to="/dashboard" className="flex items-center p-4 hover:bg-gray-100 hover:text-[#0072ff] border-b border-white">
           <HomeIcon className="w-5 h-5 mr-2" /> Dashboard
         </Link>
-        <Link to="/products" className="flex items-center p-4 hover:bg-white hover:text-[#0072ff] border-b border-white">
+        <Link to="/products" className="flex items-center p-4 hover:bg-gray-100 hover:text-[#0072ff] border-b border-white">
           <CubeIcon className="w-5 h-5 mr-2" /> Products
         </Link>
-        <Link to="/orders" className="flex items-center p-4 hover:bg-white hover:text-[#0072ff] border-b border-white">
+        <Link to="/orders" className="flex items-center p-4 hover:bg-gray-100 hover:text-[#0072ff] border-b border-white">
           <ShoppingCartIcon className="w-5 h-5 mr-2" /> Orders
         </Link>
-        <Link to="/users" className="flex items-center p-4 hover:bg-white hover:text-[#0072ff] border-b border-white">
+        <Link to="/users" className="flex items-center p-4 hover:bg-gray-100 hover:text-[#0072ff] border-b border-white">
           <UserIcon className="w-5 h-5 mr-2" /> Users
         </Link>
       </div>

@@ -1,11 +1,12 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import toast, { Toaster } from 'react-hot-toast';
 import FacebookIcon from '../assets/icons/facebook.svg';
 import TwitterIcon from '../assets/icons/twitter.svg';
 import InstagramIcon from '../assets/icons/instagram.svg';
 import LinkedinIcon from '../assets/icons/linkedin.svg';
+import { showToast } from '../utitlities/utilityStyle';
+
 
 const SocialMediaLink = ({ href, src, alt, label }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="hover:text-gray-300">
@@ -24,14 +25,13 @@ const Footer = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      // Simulate a successful subscription
-      toast.success('Subscribed successfully!');
+      showToast('Subscribed successfully!');
       resetForm();
     },
   });
 
   return (
-    <footer className="bg-gradient-to-l from-[#0072ff] to-[#00c6ff] text-white py-8 border-t-2 border-white">
+    <footer className="bg-gradient-to-l from-[#0072ff] to-[#00c6ff] text-white py-8 border-t-[0.5px] border-gray-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
@@ -72,7 +72,6 @@ const Footer = () => {
           <p>© 2024 Business Management. All rights reserved.</p>
         </div>
       </div>
-      <Toaster />
     </footer>
   );
 };
