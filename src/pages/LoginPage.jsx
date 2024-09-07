@@ -2,16 +2,15 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import { showToast } from '../utitlities/utilityStyle';
 
 const LoginPage = () => {
   const handleSubmit = (values, { resetForm }) => {
     const savedUser = JSON.parse(localStorage.getItem('user'));
-
     if (savedUser && savedUser.email === values.email && savedUser.password === values.password) {
-      toast.success('Login successful!');
+      showToast('Login successful!', 'success');
     } else {
-      toast.error('Invalid email or password');
+      showToast('Invalid email or password', 'error');
     }
     resetForm();
   };

@@ -2,19 +2,18 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import { showToast } from '../utitlities/utilityStyle';
 
 const RegisterPage = () => {
   const initialValues = { username: '', email: '', password: '', confirmPassword: '' };
 
   const handleSubmit = (values, { resetForm }) => {
     const existingUser = JSON.parse(localStorage.getItem('user'));
-
     if (existingUser && existingUser.email === values.email) {
-      toast.error('User already exists with this email!');
+      showToast('User already exists with this email!', 'error');
     } else {
       localStorage.setItem('user', JSON.stringify(values));
-      toast.success('Registration successful!');
+      showToast('Registration successful!', 'success');
       resetForm();
     }
   };
