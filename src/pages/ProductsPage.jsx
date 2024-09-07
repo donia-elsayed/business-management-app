@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { EditProductModal } from '../components/EditProductModal';
 import Table from '../components/Table';
-import useFetchProducts from '../hooks/useFetchProducts';
+import {useFetchProducts} from '../hooks/useFetchProducts';
+import toast from 'react-hot-toast';
 
-export const ProductsPage = () => {
-  const { products, error, loading, deleteProduct, updateProduct } = useFetchProducts();
+
+
+const ProductsPage = () => {
+  const { products, error, loading } = useFetchProducts();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [localProducts, setLocalProducts] = useState(products);
 
   const handleEdit = (product) => {
     setSelectedProduct(product);
@@ -14,12 +18,20 @@ export const ProductsPage = () => {
   };
 
   const handleDelete = (id) => {
-    deleteProduct(id);
+    const updatedProducts = localProducts.filter((product) => product.id !== id);
+    setLocalProducts(updatedProducts);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    toast.success("Product Deleted Successfully!", {style: {backgroundColor:"#28a74545", color:"white"}})
   };
 
   const handleSave = (updatedProduct) => {
-    updateProduct(updatedProduct);
+    const updatedProducts = localProducts.map((product) =>
+      product.id === updatedProduct.id ? updatedProduct : product
+    );
+    setLocalProducts(updatedProducts);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
     setIsModalOpen(false);
+    toast.success("Product Updated Successfully!", {style: {backgroundColor:"#28a74545", color:"white"}})
   };
 
   const headers = ["title", "price", "description", "category", "images"];
@@ -31,7 +43,7 @@ export const ProductsPage = () => {
     <div className="container mx-auto p-4">
       <Table
         headers={headers}
-        data={products}
+        data={localProducts}
         onEdit={handleEdit}
         onDelete={handleDelete}
       />
@@ -46,3 +58,5 @@ export const ProductsPage = () => {
     </div>
   );
 }
+
+export default ProductsPage

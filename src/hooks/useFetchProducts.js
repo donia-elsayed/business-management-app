@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetchProducts = () => {
+ export const useFetchProducts = () => {
   const [products, setProducts] = useState(() => {
     const storedProducts = localStorage.getItem("products");
     return storedProducts ? JSON.parse(storedProducts) : [];
@@ -32,21 +32,5 @@ const useFetchProducts = () => {
     }
   }, [products]);
 
-  const deleteProduct = (id) => {
-    const updatedProducts = products.filter((product) => product.id !== id);
-    setProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
-  };
-
-  const updateProduct = (updatedProduct) => {
-    const updatedProducts = products.map((product) =>
-      product.id === updatedProduct.id ? updatedProduct : product
-    );
-    setProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
-  };
-
-  return { products, error, loading, deleteProduct, updateProduct };
+  return { products, error, loading };
 };
-
-export default useFetchProducts;
