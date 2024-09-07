@@ -3,16 +3,16 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 const CreateOrderForm = ({ onSave }) => {
   const initialOrderValues = {
-    productName: "",
+    product: "",
     quantity: "",
     pricePerUnit: "",
     totalPrice: "",
     status: "",
-    customerName: "",
+    customer: "",
     orderDate: "",
   };
   const validationOrderSchema = Yup.object({
-    productName: Yup.string().required("Product Name is required"),
+    product: Yup.string().required("Product Name is required"),
     quantity: Yup.number()
       .required("Quantity is required")
       .positive()
@@ -22,7 +22,7 @@ const CreateOrderForm = ({ onSave }) => {
       .positive(),
     totalPrice: Yup.number().required("Total Price is required").positive(),
     status: Yup.string().required("Status is required"),
-    customerName: Yup.string().required("Customer Name is required"),
+    customer: Yup.string().required("Customer Name is required"),
     orderDate: Yup.date().required("Order Date is required"),
   });
   const handleSubmit = (values, { resetForm }) => {
@@ -39,19 +39,19 @@ const CreateOrderForm = ({ onSave }) => {
         <Form className="space-y-2">
           <div>
             <label
-              htmlFor="productName"
+              htmlFor="product"
               className="block text-sm font-medium text-gray-700"
             >
-              Product Name
+              Product
             </label>
             <Field
-              name="productName"
-              id="productName"
+              name="product"
+              id="product"
               type="text"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2"
             />
             <ErrorMessage
-              name="productName"
+              name="product"
               component="div"
               className="text-red-500 text-sm"
             />
@@ -134,19 +134,19 @@ const CreateOrderForm = ({ onSave }) => {
           </div>
           <div>
             <label
-              htmlFor="customerName"
+              htmlFor="customer"
               className="block text-sm font-medium text-gray-700"
             >
-              Customer Name
+              Customer
             </label>
             <Field
-              name="customerName"
-              id="customerName"
+              name="customer"
+              id="customer"
               type="text"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2"
             />
             <ErrorMessage
-              name="customerName"
+              name="customer"
               component="div"
               className="text-red-500 text-sm"
             />
