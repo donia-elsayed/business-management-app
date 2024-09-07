@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Modal from "./Modal"; 
-import CreateProductForm from "./CreateProductForm"; 
+import Modal from "./Modal";
+import CreateProductForm from "./CreateProductForm";
+import { showToast } from "../utitlities/utilityStyle";
 
 const NewProduct = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,6 +12,7 @@ const NewProduct = () => {
 
   const handleAddProduct = (product) => {
     setProducts([...products, product]);
+    showToast("Product added successfully!", "success");
     closeModal();
   };
 
@@ -22,7 +24,11 @@ const NewProduct = () => {
       >
         Create New Product
       </button>
-      <Modal isOpen={isModalOpen} closeModal={closeModal} title="Create New Product">
+      <Modal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        title="Create New Product"
+      >
         <CreateProductForm onSubmit={handleAddProduct} />
       </Modal>
     </div>
