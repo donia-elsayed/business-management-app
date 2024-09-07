@@ -7,7 +7,7 @@ import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { ordersData } from "../data/orders";
 import { useEntityEditing } from "../hooks/useEntityEditting";
 import { useEntityDeletion } from "../hooks/useEntityDeletion";
-import { showToast } from "../utitlities/statusStyles";
+import { showToast } from "../utitlities/utilityStyle";
 import { useModal } from "../hooks/useModal";
 
 const OrdersPage = () => {
