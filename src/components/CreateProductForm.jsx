@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import toast from 'react-hot-toast';
+import { showToast } from '../utitlities/utilityStyle';
 
 const CreateProductForm = ({ onSubmit }) => {
   const validationSchema = Yup.object({
@@ -23,10 +23,10 @@ const CreateProductForm = ({ onSubmit }) => {
   const handleSubmit = (values, { setSubmitting }) => {
     onSubmit(values)
       .then(() => {
-        toast.success('Product added successfully!');
+        showToast('Product added successfully!', 'success');
       })
       .catch((error) => {
-        toast.error('Failed to add product. Please try again.');
+        showToast('Failed to add product. Please try again.', 'error');
         console.error('Submission error:', error);
       })
       .finally(() => {
@@ -107,4 +107,3 @@ const CreateProductForm = ({ onSubmit }) => {
 };
 
 export default React.memo(CreateProductForm);
-
