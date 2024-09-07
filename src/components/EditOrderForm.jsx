@@ -27,7 +27,7 @@ const EditOrderForm = ({ order, onSave }) => {
     orderDate: Yup.date().required("Order Date is required"),
   });
   const handleSubmit = (values) => {
-    onSave(values);
+    onSave(order, values);
   };
   return (
     <div>
