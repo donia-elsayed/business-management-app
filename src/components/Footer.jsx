@@ -24,7 +24,6 @@ const Footer = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      // Simulate a successful subscription
       toast.success('Subscribed successfully!');
       resetForm();
     },
