@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 const RegisterPage = () => {
+  const initialValues = { username: '', email: '', password: '', confirmPassword: '' };
+
   const handleSubmit = (values, { resetForm }) => {
     const existingUser = JSON.parse(localStorage.getItem('user'));
 
@@ -17,7 +19,7 @@ const RegisterPage = () => {
     }
   };
 
-  const RegisterSchema = Yup.object({
+  const registerValidationSchema = Yup.object({
     username: Yup.string()
       .min(3, 'Username is too short!')
       .max(50, 'Username is too long!')
@@ -38,8 +40,8 @@ const RegisterPage = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <Formik
-            initialValues={{ username: '', email: '', password: '', confirmPassword: '' }}
-            validationSchema={RegisterSchema}
+            initialValues={initialValues}
+            validationSchema={registerValidationSchema}
             onSubmit={handleSubmit}
           >
             {({ isSubmitting, errors, touched }) => (
@@ -118,7 +120,7 @@ const RegisterPage = () => {
               to="/login"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-gray-100 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              You Already Have Account
+              You Already Have an Account
             </Link>
           </div>
         </div>

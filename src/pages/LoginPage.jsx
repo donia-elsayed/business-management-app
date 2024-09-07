@@ -16,7 +16,7 @@ const LoginPage = () => {
     resetForm();
   };
 
-  const LoginSchema = Yup.object({
+  const loginValidationSchema = Yup.object({
     email: Yup.string()
       .email('Invalid email address')
       .required('Email is required'),
@@ -25,13 +25,18 @@ const LoginPage = () => {
       .required('Password is required'),
   });
 
+  const initialValues = {
+    email: '',
+    password: ''
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-3 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <Formik
-            initialValues={{ email: '', password: '' }}
-            validationSchema={LoginSchema}
+            initialValues={initialValues}
+            validationSchema={loginValidationSchema}
             onSubmit={handleSubmit}
           >
             {({ isSubmitting, errors, touched }) => (
