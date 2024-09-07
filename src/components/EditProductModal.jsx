@@ -1,5 +1,5 @@
 import Modal from "./Modal";
-import { ProductForm } from "./ProductForm";
+import { ProductForm } from "./ProductEditForm";
 
 export const EditProductModal = ({ product, isOpen, onClose, onSave }) => {
   return (

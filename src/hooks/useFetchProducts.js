@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetchProducts = () => {
+ export const useFetchProducts = () => {
   const [products, setProducts] = useState(() => {
     const storedProducts = localStorage.getItem("products");
     return storedProducts ? JSON.parse(storedProducts) : [];
@@ -13,7 +13,7 @@ const useFetchProducts = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          "https://dummyjson.com/products?limit=20&skip=77"
+          "https://dummyjson.com/products?limit=10&skip=77"
         );
         const data = await response.json();
         const storedProducts = localStorage.getItem("products");
@@ -34,5 +34,3 @@ const useFetchProducts = () => {
 
   return { products, error, loading };
 };
-
-export default useFetchProducts;
