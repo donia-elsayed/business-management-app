@@ -45,10 +45,9 @@ const OrdersPage = () => {
   };
   const handleSave = (selectedOrder, order) => {
     if (modalType === "edit" && selectedOrder) {
-      updateOrder(selectedOrder.id, order);
+      updateOrder(selectedOrder?.id, order);
       showToast("Order updated successfully!", "success");
     } else {
-      console.log(order);
       setOrders((prevOrders) => [
         ...prevOrders,
         { id: `ORD0 ${prevOrders?.length + 1}`, ...order },
