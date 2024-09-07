@@ -14,15 +14,34 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/login" element={<AuthProvider isLoggedIn={false}><LoginPage /></AuthProvider>} />
-        <Route path="/register" element={<AuthProvider isLoggedIn={false}><RegisterPage /></AuthProvider>} />
-        <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
+        <Route
+          path="/login"
+          element={
+            <AuthProvider isLoggedIn={false}>
+              <LoginPage />
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AuthProvider isLoggedIn={false}>
+              <RegisterPage />
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            isLoggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+          }
+        />
         {isLoggedIn && (
-          <Route path="*" element={<AuthProvider isLoggedIn={true} />}>
-            <Route path="dashboard" element={<DashboardPage />} />
-            <Route path="products" element={<ProductsPage />} />
-            <Route path="orders" element={<OrdersPage />} />
-            <Route path="users" element={<UsersPage />} />
+          <Route element={<AuthProvider isLoggedIn={true} />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/orders" element={<OrdersPage />} />
+            <Route path="/users" element={<UsersPage />} />
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </Route>
         )}
