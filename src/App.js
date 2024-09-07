@@ -7,7 +7,6 @@ import OrdersPage from "./pages/OrdersPage";
 import ProductsPage from "./pages/ProductsPage";
 import UsersPage from "./pages/UsersPage";
 
-
 function App() {
   return (
     <div className="App">
