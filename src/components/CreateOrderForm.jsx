@@ -2,8 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 const CreateOrderForm = ({ onSave }) => {
-  const initialEditValues = {
-    id: "",
+  const initialOrderValues = {
     productName: "",
     quantity: "",
     pricePerUnit: "",
@@ -27,13 +26,13 @@ const CreateOrderForm = ({ onSave }) => {
     orderDate: Yup.date().required("Order Date is required"),
   });
   const handleSubmit = (values, { resetForm }) => {
-    onSave(values);
+    onSave(null, values);
     resetForm();
   };
   return (
     <div className="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
       <Formik
-        initialValues={initialEditValues}
+        initialValues={initialOrderValues}
         validationSchema={validationOrderSchema}
         onSubmit={handleSubmit}
       >
@@ -123,7 +122,7 @@ const CreateOrderForm = ({ onSave }) => {
             </label>
             <Field
               name="status"
-              id="satus"
+              id="status"
               type="text"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2"
             />
