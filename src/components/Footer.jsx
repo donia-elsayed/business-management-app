@@ -1,11 +1,12 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import toast, { Toaster } from 'react-hot-toast';
 import FacebookIcon from '../assets/icons/facebook.svg';
 import TwitterIcon from '../assets/icons/twitter.svg';
 import InstagramIcon from '../assets/icons/instagram.svg';
 import LinkedinIcon from '../assets/icons/linkedin.svg';
+import { showToast } from '../utitlities/utilityStyle';
+
 
 const SocialMediaLink = ({ href, src, alt, label }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="hover:text-gray-300">
@@ -24,7 +25,7 @@ const Footer = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      toast.success('Subscribed successfully!');
+      showToast('Subscribed successfully!');
       resetForm();
     },
   });
@@ -71,7 +72,6 @@ const Footer = () => {
           <p>© 2024 Business Management. All rights reserved.</p>
         </div>
       </div>
-      <Toaster />
     </footer>
   );
 };
