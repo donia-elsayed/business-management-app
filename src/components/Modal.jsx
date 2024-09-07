@@ -12,7 +12,7 @@ const Modal = ({ isOpen, closeModal, title, children }) => {
       >
         <div className="flex justify-center items-center min-h-screen text-center">
           <DialogPanel as="div" className="w-full max-w-md">
-            <div className="relative w-full px-6 py-8 my-8 overflow-hidden text-left transition-all transform bg-white shadow-xl rounded-2xl">
+            <div className="relative w-full px-6 py-8 my-6 overflow-hidden text-left transition-all transform bg-white shadow-xl rounded-2xl">
               <div className="flex justify-between items-center mb-4">
                 <DialogTitle>{title}</DialogTitle>
                 <button
