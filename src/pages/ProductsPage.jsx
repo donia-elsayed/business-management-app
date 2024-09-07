@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { EditProductModal } from '../components/EditProductModal';
-import Table from '../components/Table';
-import {useFetchProducts} from '../hooks/useFetchProducts';
-import toast from 'react-hot-toast';
-
-
+import { useState } from "react";
+import Table from "../components/Table";
+import { EditProductModal } from "../components/EditProductModal";
+import { useFetchProducts } from "../hooks/useFetchProducts";
+import { showToast } from "../utitlities/utilityStyle";
 
 const ProductsPage = () => {
   const { products, error, loading } = useFetchProducts();
@@ -18,10 +16,12 @@ const ProductsPage = () => {
   };
 
   const handleDelete = (id) => {
-    const updatedProducts = localProducts.filter((product) => product.id !== id);
+    const updatedProducts = localProducts.filter(
+      (product) => product.id !== id
+    );
     setLocalProducts(updatedProducts);
     localStorage.setItem("products", JSON.stringify(updatedProducts));
-    toast.success("Product Deleted Successfully!", {style: {backgroundColor:"#28a74545", color:"white"}})
+    showToast("Product Deleted Successfully!", "success");
   };
 
   const handleSave = (updatedProduct) => {
@@ -31,7 +31,7 @@ const ProductsPage = () => {
     setLocalProducts(updatedProducts);
     localStorage.setItem("products", JSON.stringify(updatedProducts));
     setIsModalOpen(false);
-    toast.success("Product Updated Successfully!", {style: {backgroundColor:"#28a74545", color:"white"}})
+    showToast("Product Updated Successfully!", "success");
   };
 
   const headers = ["title", "price", "description", "category", "images"];
@@ -57,6 +57,6 @@ const ProductsPage = () => {
       )}
     </div>
   );
-}
+};
 
-export default ProductsPage
+export default ProductsPage;
