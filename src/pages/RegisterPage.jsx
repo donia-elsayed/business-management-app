@@ -33,10 +33,10 @@ const RegisterPage = () => {
     const existingUser = JSON.parse(localStorage.getItem("user"));
     if (existingUser && existingUser.email === values.email) {
       showToast("User already exists with this email!", "error");
-      navigate("/login");
     } else {
       localStorage.setItem("user", JSON.stringify(values));
       showToast("Registration successful!", "success");
+      navigate("/login");
       resetForm();
     }
   };
