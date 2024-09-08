@@ -22,7 +22,7 @@ function App() {
         <Route
           path="/"
           element={
-            isLoggedIn ? <Navigate to="/      " /> : <Navigate to="/login" />
+            isLoggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
           }
         />
         {isLoggedIn && (
