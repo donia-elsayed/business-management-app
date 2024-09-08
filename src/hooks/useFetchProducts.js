@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
- export const useFetchProducts = () => {
+export const useFetchProducts = () => {
   const [products, setProducts] = useState(() => {
     const storedProducts = localStorage.getItem("products");
     return storedProducts ? JSON.parse(storedProducts) : [];
@@ -30,7 +30,7 @@ import { useState, useEffect } from "react";
     if (!products.length) {
       fetchProducts();
     }
-  }, [products]);
+  }, []);
 
-  return { products, error, loading };
+  return { products, setProducts, error, loading };
 };

@@ -1,32 +1,38 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
-import { showToast } from '../utitlities/utilityStyle';
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { Link, useNavigate } from "react-router-dom";
+import { showToast } from "../utitlities/utilityStyle";
 
 const LoginPage = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    const savedUser = JSON.parse(localStorage.getItem('user'));
-    if (savedUser && savedUser.email === values.email && savedUser.password === values.password) {
-      showToast('Login successful!', 'success');
-    } else {
-      showToast('Invalid email or password', 'error');
-    }
-    resetForm();
+  const navigate = useNavigate();
+  const initialValues = {
+    email: "",
+    password: "",
   };
 
   const loginValidationSchema = Yup.object({
     email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
+      .email("Invalid email address")
+      .required("Email is required"),
     password: Yup.string()
-      .min(6, 'Password is too short!')
-      .required('Password is required'),
+      .min(6, "Password is too short!")
+      .required("Password is required"),
   });
 
-  const initialValues = {
-    email: '',
-    password: ''
+  const handleSubmit = (values, { resetForm }) => {
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    if (
+      savedUser &&
+      savedUser.email === values.email &&
+      savedUser.password === values.password
+    ) {
+      showToast("Login successful!", "success");
+      navigate("/dashboard");
+    } else {
+      showToast("Invalid email or password", "error");
+    }
+    resetForm();
   };
 
   return (
@@ -40,34 +46,58 @@ const LoginPage = () => {
           >
             {({ isSubmitting, errors, touched }) => (
               <Form className="space-y-6">
-                <h2 className="text-center text-3xl font-extrabold text-gray-900">Sign In</h2>
+                <h2 className="text-center text-3xl font-extrabold text-gray-900">
+                  Sign In
+                </h2>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address*</label>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email address*
+                  </label>
                   <div className="mt-1">
                     <Field
                       type="email"
                       name="email"
                       id="email"
                       className={`appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 sm:text-sm ${
-                        touched.email && errors.email ? 'border-red-500' : 'border-gray-300'
+                        touched.email && errors.email
+                          ? "border-red-500"
+                          : "border-gray-300"
                       }`}
                     />
                   </div>
-                  <ErrorMessage name="email" component="div" className="mt-2 text-sm text-red-600" />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="mt-2 text-sm text-red-600"
+                  />
                 </div>
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password*</label>
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Password*
+                  </label>
                   <div className="mt-1">
                     <Field
                       type="password"
                       name="password"
                       id="password"
                       className={`appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 sm:text-sm ${
-                        touched.password && errors.password ? 'border-red-500' : 'border-gray-300'
+                        touched.password && errors.password
+                          ? "border-red-500"
+                          : "border-gray-300"
                       }`}
                     />
                   </div>
-                  <ErrorMessage name="password" component="div" className="mt-2 text-sm text-red-600" />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="mt-2 text-sm text-red-600"
+                  />
                 </div>
                 <div>
                   <button

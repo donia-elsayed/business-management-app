@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const CreateProductForm = ({ onSubmit }) => {
+const CreateProductForm = ({ onSave }) => {
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
     price: Yup.number()
@@ -22,7 +22,7 @@ const CreateProductForm = ({ onSubmit }) => {
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
-    onSubmit(values);
+    onSave(null, values);
     setSubmitting(false);
   };
 
