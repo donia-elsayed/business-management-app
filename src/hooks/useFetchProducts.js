@@ -32,5 +32,5 @@ export const useFetchProducts = () => {
     }
   }, []);
 
-  return { products, error, loading };
+  return { products, setProducts, error, loading };
 };
