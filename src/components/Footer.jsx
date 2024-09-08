@@ -31,7 +31,7 @@ const Footer = () => {
       emailAddress: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: ({ resetForm }) => {
       showToast("Subscribed successfully!", "success");
       resetForm();
     },
