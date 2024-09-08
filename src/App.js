@@ -13,9 +13,9 @@ import Footer from "./components/Footer";
 
 function App() {
   const isLoggedIn = () => {
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-    return savedUser !== null;
+    return localStorage.getItem("isLoggedIn") === "true";
   };
+  
 
   return (
     <div className="App">

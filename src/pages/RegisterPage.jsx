@@ -34,12 +34,14 @@ const RegisterPage = () => {
     if (existingUser && existingUser.email === values.email) {
       showToast("User already exists with this email!", "error");
     } else {
-      localStorage.setItem("user", JSON.stringify(values));
+      const userWithStatus = { ...values, isLoggedIn: false };  
+      localStorage.setItem("user", JSON.stringify(userWithStatus));   
       showToast("Registration successful!", "success");
       navigate("/login");
       resetForm();
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col pt-6 sm:px-6 lg:px-4">

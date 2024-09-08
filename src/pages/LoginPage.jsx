@@ -27,6 +27,7 @@ const LoginPage = () => {
       savedUser.email === values.email &&
       savedUser.password === values.password
     ) {
+      localStorage.setItem("isLoggedIn", "true");
       showToast("Login successful!", "success");
       navigate("/dashboard");
     } else {
@@ -34,6 +35,7 @@ const LoginPage = () => {
     }
     resetForm();
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-3 sm:px-6 lg:px-8">
