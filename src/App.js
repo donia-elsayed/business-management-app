@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
@@ -11,21 +12,22 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 function App() {
-  const isLoggedIn = true;
+  const isLoggedIn = () => {
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    return savedUser !== null;
+  };
 
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={isLoggedIn() ? <Navigate to="/dashboard" /> : <LoginPage />} />
+        <Route path="/register" element={isLoggedIn() ? <Navigate to="/dashboard" /> : <RegisterPage />} />
         <Route
           path="/"
-          element={
-            isLoggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
-          }
+          element={isLoggedIn() ? <Navigate to="/dashboard" /> : <Navigate to="/login" />}
         />
-        {isLoggedIn && (
+        {isLoggedIn() && (
           <Route element={<AuthProvider isLoggedIn={true} />}>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/products" element={<ProductsPage />} />
