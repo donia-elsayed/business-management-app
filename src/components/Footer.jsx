@@ -21,18 +21,18 @@ const SocialMediaLink = ({ href, src, alt, label }) => (
 
 const Footer = () => {
   const validationSchema = Yup.object({
-    email: Yup.string()
+    emailAddress: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),
   });
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      emailAddress: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      showToast("Subscribed successfully!");
+      showToast("Subscribed successfully!", "success");
       resetForm();
     },
   });
@@ -81,22 +81,22 @@ const Footer = () => {
           <div className="w-full md:w-1/4">
             <h2 className="text-lg font-bold mb-4">Newsletter</h2>
             <form onSubmit={formik.handleSubmit}>
-              <label htmlFor="email" className="sr-only">
+              <label htmlFor="emailAddress" className="sr-only">
                 Email
               </label>
               <input
                 type="email"
-                id="email"
-                name="email"
+                id="emailAddress"
+                name="emailAddress"
                 placeholder="Enter your email"
                 className="w-full p-2 mb-2 text-black rounded"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.email}
+                value={formik.values.emailAddress}
               />
-              {formik.touched.email && formik.errors.email ? (
+              {formik.touched.emailAddress && formik.errors.emailAddress ? (
                 <div className="text-red-500 text-sm">
-                  {formik.errors.email}
+                  {formik.errors.emailAddress}
                 </div>
               ) : null}
               <button
