@@ -7,33 +7,22 @@ import OrdersPage from "./pages/OrdersPage";
 import ProductsPage from "./pages/ProductsPage";
 import UsersPage from "./pages/UsersPage";
 import AuthProvider from "./components/AuthProvider";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const isLoggedIn = true;
 
   return (
     <div className="App">
+      <Navbar />
       <Routes>
-        <Route
-          path="/login"
-          element={
-            <AuthProvider isLoggedIn={false}>
-              <LoginPage />
-            </AuthProvider>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <AuthProvider isLoggedIn={false}>
-              <RegisterPage />
-            </AuthProvider>
-          }
-        />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route
           path="/"
           element={
-            isLoggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+            isLoggedIn ? <Navigate to="/      " /> : <Navigate to="/login" />
           }
         />
         {isLoggedIn && (
@@ -46,6 +35,7 @@ function App() {
           </Route>
         )}
       </Routes>
+      <Footer />
     </div>
   );
 }
