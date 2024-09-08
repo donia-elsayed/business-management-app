@@ -7,26 +7,26 @@ const Table = ({ headers, data = [], onEdit, onDelete, onToggleBlock }) => {
   return (
     <div className="overflow-x-auto my-10">
       <table className="max-w-2xl divide-y m-auto divide-gray-200">
-        <thead className="bg-gray-50">
+        <thead className="bg-gray-50 text-justify">
           <tr>
             {allHeaders.map((header) => (
               <th
                 key={header}
-                className="px-6 py-3 text-left text-lg font-medium text-gray-500 tracking-wider capitalize"
+                className="px-5 py-3 text-left text-lg font-medium text-gray-500 tracking-wider capitalize"
               >
                 {header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-gray-200 text-justify">
           {data?.map((item) => {
             return (
               <tr key={item.id}>
                 {headers.map((header) => (
                   <td
                     key={header}
-                    className="px-4 py-2 whitespace-nowrap text-base"
+                    className="px-5 py-3 whitespace-nowrap text-base"
                   >
                     {header === "images" ? (
                       <img

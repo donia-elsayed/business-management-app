@@ -1,19 +1,18 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-const EditOrderForm = ({ order, onSave }) => {
-  const initialEditValues = {
-    id: order?.id,
-    productName: order?.productName,
-    quantity: order?.quantity,
-    pricePerUnit: order?.pricePerUnit,
-    totalPrice: order?.totalPrice,
-    status: order?.status,
-    customerName: order?.customerName,
-    orderDate: order?.orderDate,
+const CreateOrderForm = ({ onSave }) => {
+  const initialOrderValues = {
+    product: "",
+    quantity: "",
+    pricePerUnit: "",
+    totalPrice: "",
+    status: "",
+    customer: "",
+    orderDate: "",
   };
   const validationOrderSchema = Yup.object({
-    productName: Yup.string().required("Product Name is required"),
+    product: Yup.string().required("Product Name is required"),
     quantity: Yup.number()
       .required("Quantity is required")
       .positive()
@@ -23,35 +22,36 @@ const EditOrderForm = ({ order, onSave }) => {
       .positive(),
     totalPrice: Yup.number().required("Total Price is required").positive(),
     status: Yup.string().required("Status is required"),
-    customerName: Yup.string().required("Customer Name is required"),
+    customer: Yup.string().required("Customer Name is required"),
     orderDate: Yup.date().required("Order Date is required"),
   });
-  const handleSubmit = (values) => {
-    onSave(order, values);
+  const handleSubmit = (values, { resetForm }) => {
+    onSave(null, values);
+    resetForm();
   };
   return (
-    <div>
+    <div className="w-full max-w-md mx-auto bg-white px-4 py-6 rounded-lg shadow-md">
       <Formik
-        initialValues={initialEditValues}
+        initialValues={initialOrderValues}
         validationSchema={validationOrderSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="space-y-4">
+        <Form className="space-y-2">
           <div>
             <label
-              htmlFor="productName"
+              htmlFor="product"
               className="block text-sm font-medium text-gray-700"
             >
-              Product Name
+              Product
             </label>
             <Field
-              name="productName"
-              id="productName"
+              name="product"
+              id="product"
               type="text"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2"
             />
             <ErrorMessage
-              name="productName"
+              name="product"
               component="div"
               className="text-red-500 text-sm"
             />
@@ -122,7 +122,7 @@ const EditOrderForm = ({ order, onSave }) => {
             </label>
             <Field
               name="status"
-              id="satus"
+              id="status"
               type="text"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2"
             />
@@ -134,17 +134,19 @@ const EditOrderForm = ({ order, onSave }) => {
           </div>
           <div>
             <label
-              htmlFor="customerName"
+              htmlFor="customer"
               className="block text-sm font-medium text-gray-700"
-            ></label>
+            >
+              Customer
+            </label>
             <Field
-              name="customerName"
-              id="customerName"
+              name="customer"
+              id="customer"
               type="text"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2"
             />
             <ErrorMessage
-              name="customerName"
+              name="customer"
               component="div"
               className="text-red-500 text-sm"
             />
@@ -170,9 +172,9 @@ const EditOrderForm = ({ order, onSave }) => {
           </div>
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700"
+            className="block w-full px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 border border-transparent rounded-md shadow-sm hover:from-purple-600 hover:to-pink-600"
           >
-            Edit Order
+            Create New Order
           </button>
         </Form>
       </Formik>
@@ -180,4 +182,4 @@ const EditOrderForm = ({ order, onSave }) => {
   );
 };
 
-export default EditOrderForm;
+export default CreateOrderForm;
