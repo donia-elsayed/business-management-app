@@ -1,26 +1,16 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../utitlities/utilityStyle";
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const initialValues = {
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
-  };
-
-  const handleSubmit = (values, { resetForm }) => {
-    const existingUser = JSON.parse(localStorage.getItem("user"));
-    if (existingUser && existingUser.email === values.email) {
-      showToast("User already exists with this email!", "error");
-    } else {
-      localStorage.setItem("user", JSON.stringify(values));
-      showToast("Registration successful!", "success");
-      resetForm();
-    }
   };
 
   const registerValidationSchema = Yup.object({
@@ -38,6 +28,18 @@ const RegisterPage = () => {
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Confirm password is required"),
   });
+
+  const handleSubmit = (values, { resetForm }) => {
+    const existingUser = JSON.parse(localStorage.getItem("user"));
+    if (existingUser && existingUser.email === values.email) {
+      showToast("User already exists with this email!", "error");
+      navigate("/login");
+    } else {
+      localStorage.setItem("user", JSON.stringify(values));
+      showToast("Registration successful!", "success");
+      resetForm();
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col pt-6 sm:px-6 lg:px-4">
