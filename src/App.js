@@ -9,15 +9,22 @@ import UsersPage from "./pages/UsersPage";
 import AuthProvider from "./components/AuthProvider";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { useEffect, useState } from "react";
 
 function App() {
-  const user = localStorage.getItem("loggedUser");
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const loggedUser = localStorage.getItem("loggedUser");
+    if (loggedUser) {
+      setUser(loggedUser);
+    }
+  }, []);
 
   return (
     <div className="App">
-      <Navbar user={user} />
+      <Navbar user={user} setUser={setUser} />
       <Routes>
-        <Route path="/login" element={<LoginPage user={user} />} />
+        <Route path="/login" element={<LoginPage setUser={setUser} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route
           path="/dashboard"

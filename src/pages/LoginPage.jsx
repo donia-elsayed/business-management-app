@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../utitlities/utilityStyle";
 
-const LoginPage = () => {
+const LoginPage = ({ setUser }) => {
   const navigate = useNavigate();
   const initialValues = {
     email: "",
@@ -22,12 +22,14 @@ const LoginPage = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
-    localStorage.setItem("loggedUser", JSON.stringify(values.email));
     if (
       savedUser &&
       savedUser.email === values.email &&
       savedUser.password === values.password
     ) {
+      localStorage.setItem("loggedUser", JSON.stringify(values.email));
+      setUser(values.email);
+
       showToast("Login successful!", "success");
       navigate("/dashboard");
     } else {
@@ -37,7 +39,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-3 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-6 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <Formik
@@ -47,7 +49,7 @@ const LoginPage = () => {
           >
             {({ isSubmitting, errors, touched }) => (
               <Form className="space-y-6">
-                <h2 className="text-center text-3xl font-extrabold text-gray-900">
+                <h2 className="text-center text-2xl font-extrabold text-gray-900">
                   Sign In
                 </h2>
                 <div>
