@@ -172,7 +172,7 @@ const CreateOrderForm = ({ onSave }) => {
           </div>
           <button
             type="submit"
-            className="block w-full px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 border border-transparent rounded-md shadow-sm hover:from-purple-600 hover:to-pink-600"
+            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-400 border border-transparent rounded-md shadow-sm hover:from-purple-600 hover:to-pink-600"
           >
             Create New Order
           </button>
