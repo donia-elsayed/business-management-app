@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
@@ -11,29 +11,47 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 function App() {
-  const isLoggedIn = true;
+  const user = localStorage.getItem("loggedUser");
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar user={user} />
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage user={user} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route
-          path="/"
+          path="/dashboard"
           element={
-            isLoggedIn ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+            <AuthProvider user={user}>
+              <DashboardPage />
+            </AuthProvider>
           }
         />
-        {isLoggedIn && (
-          <Route element={<AuthProvider isLoggedIn={true} />}>
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/orders" element={<OrdersPage />} />
-            <Route path="/users" element={<UsersPage />} />
-            <Route path="*" element={<Navigate to="/dashboard" />} />
-          </Route>
-        )}
+        <Route
+          path="/products"
+          element={
+            <AuthProvider user={user}>
+              <ProductsPage />
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <AuthProvider user={user}>
+              <OrdersPage />
+            </AuthProvider>
+          }
+        />
+
+        <Route
+          path="/users"
+          element={
+            <AuthProvider user={user}>
+              <UsersPage />
+            </AuthProvider>
+          }
+        />
       </Routes>
       <Footer />
     </div>
