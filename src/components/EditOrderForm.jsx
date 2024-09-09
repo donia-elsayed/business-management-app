@@ -4,12 +4,12 @@ import * as Yup from "yup";
 const EditOrderForm = ({ order, onSave }) => {
   const initialEditValues = {
     id: order?.id,
-    productName: order?.productName,
+    product: order?.product,
     quantity: order?.quantity,
     pricePerUnit: order?.pricePerUnit,
     totalPrice: order?.totalPrice,
     status: order?.status,
-    customerName: order?.customerName,
+    customer: order?.customer,
     orderDate: order?.orderDate,
   };
   const validationOrderSchema = Yup.object({
@@ -39,19 +39,19 @@ const EditOrderForm = ({ order, onSave }) => {
         <Form className="space-y-4">
           <div>
             <label
-              htmlFor="productName"
+              htmlFor="product"
               className="block text-sm font-medium text-gray-700"
             >
-              Product Name
+              Product
             </label>
             <Field
-              name="productName"
-              id="productName"
+              name="product"
+              id="product"
               type="text"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2"
             />
             <ErrorMessage
-              name="productName"
+              name="product"
               component="div"
               className="text-red-500 text-sm"
             />
@@ -134,17 +134,19 @@ const EditOrderForm = ({ order, onSave }) => {
           </div>
           <div>
             <label
-              htmlFor="customerName"
+              htmlFor="customer"
               className="block text-sm font-medium text-gray-700"
-            ></label>
+            >
+              Customer
+            </label>
             <Field
-              name="customerName"
-              id="customerName"
+              name="customer"
+              id="customer"
               type="text"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-4 py-2"
             />
             <ErrorMessage
-              name="customerName"
+              name="customer"
               component="div"
               className="text-red-500 text-sm"
             />
