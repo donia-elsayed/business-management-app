@@ -71,10 +71,14 @@ const Table = ({ headers, data = [], onEdit, onDelete, onToggleBlock }) => {
 
                   {onToggleBlock && (
                     <button
-                      onClick={() => onToggleBlock(item.id, item.isBlocked)}
-                      className={`${item.isBlocked} ? 'text-green-600 hover:text-green-900' : 'text-red-600 hover:text-red-900'`}
+                      onClick={() => onToggleBlock(item.id, item.userStatus)}
+                      className={`text-white px-4 py-2 rounded-md ${
+                        item.userStatus === "Blocked"
+                          ? "bg-green-600 hover:bg-green-900"
+                          : "bg-red-600 hover:bg-red-900"
+                      }`}
                     >
-                      {item.isBlocked ? "Unblock" : "Block"}
+                      {item.userStatus === "Blocked" ? "Unblock" : "Block"}
                     </button>
                   )}
                 </td>
