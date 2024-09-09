@@ -5,23 +5,17 @@ import { pieData, pieOptions } from "./data";
 
 ChartJS.register(ArcElement, Title, Tooltip, Legend);
 
-const PieChart = () => (
-  <div className="border rounded-lg p-6 shadow-lg bg-white">
-    <h2 className="text-xl font-semibold mb-4 text-gray-800">
-      Product Distribution (Pie)
-    </h2>
-    <div
-      style={{
-        width: "100%",
-        height: "300px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Pie data={pieData} options={pieOptions} />
+const PieChart = () => {
+  return (
+    <div className="border rounded-lg p-6 shadow-lg bg-white">
+      <h2 className="text-xl font-semibold mb-4 text-gray-800">
+        Product Distribution (Pie)
+      </h2>
+      <div className="w-full h-[300px] flex justify-center items-center content-center">
+        <Pie data={pieData} options={pieOptions} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default PieChart;
