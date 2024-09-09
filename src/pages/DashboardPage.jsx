@@ -13,6 +13,8 @@ const products = JSON.parse(localStorage.getItem("products"));
 const numOfProducts = products?.length || 0;
 const orders = JSON.parse(localStorage.getItem("orders"));
 const numOfOrders = orders?.length || 0;
+const users = JSON.parse(localStorage.getItem("users"));
+const numOfUsers = users?.length || 0;
 const totalSales = (
   orders?.reduce((total, order) => total + order.totalPrice, 0) || 0
 ).toFixed(2);
@@ -27,7 +29,7 @@ const DashboardPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <MetricCard
           title="Users"
-          value="1,234"
+          value={numOfUsers}
           bgColor="bg-gradient-to-r from-blue-400 to-blue-600"
           textColor="text-white"
           icon={UsersIcon}
