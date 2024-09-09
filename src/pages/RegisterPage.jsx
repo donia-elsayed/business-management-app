@@ -42,7 +42,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col pt-6 sm:px-6 lg:px-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col pt-4 sm:px-6 lg:px-4">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-4 px-4 shadow sm:rounded-lg sm:px-10">
           <Formik
@@ -51,8 +51,8 @@ const RegisterPage = () => {
             onSubmit={handleSubmit}
           >
             {({ isSubmitting, errors, touched }) => (
-              <Form className="space-y-6">
-                <h2 className="text-center text-3xl font-extrabold text-gray-900">
+              <Form className="space-y-4">
+                <h2 className="text-center text-2xl font-extrabold text-gray-900">
                   Register
                 </h2>
                 <div>
