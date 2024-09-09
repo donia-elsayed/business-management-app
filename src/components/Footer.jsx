@@ -38,10 +38,10 @@ const Footer = () => {
   });
 
   return (
-    <footer className="bg-gradient-to-l from-[#0072ff] to-[#00c6ff] text-white py-8 border-t-[0.5px] border-gray-100">
+    <footer className="bg-gradient-to-l from-[#0072ff] to-[#00c6ff] text-white py-6 border-t-[0.5px] border-gray-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
-          <div className="w-full md:w-1/4 mb-6 md:mb-0">
+          <div className="w-full md:w-1/4 mb-4 md:mb-0">
             <h2 className="text-lg font-bold mb-4">About Us</h2>
             <p className="text-base">
               We are a leading e-commerce platform providing top-notch services
@@ -49,7 +49,7 @@ const Footer = () => {
               excellence in every aspect of our business.
             </p>
           </div>
-          <div className="w-full md:w-1/4 mb-6 md:mb-0">
+          <div className="w-full md:w-1/4 mb-4 md:mb-0">
             <h2 className="text-lg font-bold mb-4">Follow Us</h2>
             <div className="flex space-x-4">
               <SocialMediaLink
@@ -108,7 +108,7 @@ const Footer = () => {
             </form>
           </div>
         </div>
-        <div className="mt-8 text-center">
+        <div className="mt-4 text-center">
           <p>© 2024 Business Management. All rights reserved.</p>
         </div>
       </div>
