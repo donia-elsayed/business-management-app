@@ -22,6 +22,7 @@ const LoginPage = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
+    localStorage.setItem("loggedUser", JSON.stringify(values.email));
     if (
       savedUser &&
       savedUser.email === values.email &&
