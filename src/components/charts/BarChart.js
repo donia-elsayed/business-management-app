@@ -20,15 +20,17 @@ ChartJS.register(
   Legend
 );
 
-const BarChart = () => (
-  <div className="border rounded-lg p-6 shadow-lg bg-white">
-    <h2 className="text-xl font-semibold mb-4 text-gray-800">
-      Sales Overview (Bar)
-    </h2>
-    <div className="w-full h-[300px]">
-      <Bar data={barData} options={options} />
+const BarChart = () => {
+  return (
+    <div className="border rounded-lg p-6 shadow-lg bg-white">
+      <h2 className="text-xl font-semibold mb-4 text-gray-800">
+        Sales Overview (Bar)
+      </h2>
+      <div className="w-full h-[300px]">
+        <Bar data={barData} options={options} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default BarChart;
