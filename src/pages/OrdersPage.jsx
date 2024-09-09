@@ -61,11 +61,10 @@ const OrdersPage = () => {
   }, [orders]);
   return (
     <div>
-      <div className="flex justify-between items-center px-4">
-        <h2 className="text-2xl font-bold text-gray-600">Orders</h2>
+      <div className="flex justify-end items-center px-4">
         <button
           onClick={() => openModal("create")}
-          className="flex gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg my-6"
+          className="flex gap-2 bg-gradient-to-r from-[#00c6ff] to-[#0072ff] text-white font-bold py-3 px-6 rounded-lg hover:shadow-lg my-6"
         >
           <PlusCircleIcon className="h-6 w-6" /> <span>Create New Order</span>
         </button>
