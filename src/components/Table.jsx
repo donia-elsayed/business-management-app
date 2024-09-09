@@ -75,7 +75,7 @@ const Table = ({ headers, data = [], onEdit, onDelete, onToggleBlock }) => {
                       className={`text-white px-4 py-2 rounded-md ${
                         item.userStatus === "Blocked"
                           ? "bg-green-600 hover:bg-green-900"
-                          : "bg-red-600 hover:bg-red-900"
+                          : "bg-red-600 hover:bg-red-900 px-6"
                       }`}
                     >
                       {item.userStatus === "Blocked" ? "Unblock" : "Block"}
