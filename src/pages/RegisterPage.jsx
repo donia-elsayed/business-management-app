@@ -42,7 +42,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col pt-4 sm:px-6 lg:px-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center pt-4 sm:px-6 lg:px-4">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-4 px-4 shadow sm:rounded-lg sm:px-10">
           <Formik
@@ -159,7 +159,7 @@ const RegisterPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#00c6ff] to-[#0072ff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     Register
                   </button>
@@ -170,7 +170,7 @@ const RegisterPage = () => {
           <div className="mt-6">
             <Link
               to="/login"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-gray-100 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-sky-600 bg-gray-100 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               You Already Have an Account
             </Link>
