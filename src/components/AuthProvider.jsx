@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AuthProvider = ({ user, children }) => {
   const navigate = useNavigate();
-  if (user === null) navigate("/login");
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   return user ? (
     <div className="flex">
       <Sidebar />
       <div className="flex-1">{children}</div>
     </div>
-  ) : (
-    <Navigate path="/login" />
-  );
+  ) : null;
 };
 
 export default AuthProvider;
