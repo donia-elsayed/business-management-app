@@ -13,7 +13,7 @@ const EditOrderForm = ({ order, onSave }) => {
     orderDate: order?.orderDate,
   };
   const validationOrderSchema = Yup.object({
-    productName: Yup.string().required("Product Name is required"),
+    product: Yup.string().required("Product Name is required"),
     quantity: Yup.number()
       .required("Quantity is required")
       .positive()
@@ -23,7 +23,7 @@ const EditOrderForm = ({ order, onSave }) => {
       .positive(),
     totalPrice: Yup.number().required("Total Price is required").positive(),
     status: Yup.string().required("Status is required"),
-    customerName: Yup.string().required("Customer Name is required"),
+    customer: Yup.string().required("Customer Name is required"),
     orderDate: Yup.date().required("Order Date is required"),
   });
   const handleSubmit = (values) => {
