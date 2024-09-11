@@ -13,12 +13,19 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser");
     if (loggedUser) {
-      setUser(loggedUser);
+      setUser(JSON.parse(loggedUser));
     }
+    setIsLoading(false);
   }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="App">
