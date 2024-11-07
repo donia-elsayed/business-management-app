@@ -10,6 +10,7 @@ import AuthProvider from "./components/AuthProvider";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
+import HomeImg from "./assets/home-img.jpg";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,9 @@ function App() {
   return (
     <div className="App">
       <Navbar user={user} setUser={setUser} />
+      <div className="w-full sm:w-3/4 mx-auto py-12">
+        <img src={HomeImg} alt="Business" className=" w-full object-contain" />
+      </div>
       <Routes>
         <Route path="/login" element={<LoginPage setUser={setUser} />} />
         <Route path="/register" element={<RegisterPage />} />
