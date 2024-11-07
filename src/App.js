@@ -16,7 +16,9 @@ function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
+  const isHomePage =
+    location.pathname === "/" ||
+    location.pathname === "/business-management-app";
 
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser");
@@ -33,15 +35,15 @@ function App() {
   return (
     <div className="App">
       <Navbar user={user} setUser={setUser} />
-      {isHomePage && (
-        <div className="w-full sm:w-3/4 mx-auto py-12">
+      <div className={`w-full sm:w-3/4 mx-auto ${isHomePage ? "py-12" : ""}`}>
+        {isHomePage && (
           <img
             src={HomeImg}
             alt="Business"
             className=" w-full object-contain"
           />
-        </div>
-      )}
+        )}
+      </div>
       <Routes>
         <Route path="/login" element={<LoginPage setUser={setUser} />} />
         <Route path="/register" element={<RegisterPage />} />
