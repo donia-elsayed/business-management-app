@@ -12,7 +12,9 @@ const Navbar = ({ user, setUser }) => {
   return (
     <nav className="text-white p-4 border-b-[0.5px] border-gray-100 bg-gradient-to-r from-[#0072ff] to-[#00c6ff]">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-lg sm:text-xl font-bold">Business Management</h1>
+        <Link to="/" className="text-lg sm:text-xl font-bold">
+          Business Management
+        </Link>
         {user ? (
           <button
             onClick={handleLogout}
