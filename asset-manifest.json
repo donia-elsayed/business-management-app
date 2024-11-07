@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/business-management-app/static/css/main.3daa298c.css",
-    "main.js": "/business-management-app/static/js/main.97b3154a.js",
-    "static/js/453.e95aa70b.chunk.js": "/business-management-app/static/js/453.e95aa70b.chunk.js",
-    "static/media/twitter.svg": "/business-management-app/static/media/twitter.4d3c497518f671a78f72a2ecd98afeac.svg",
-    "static/media/instagram.svg": "/business-management-app/static/media/instagram.f6109e5b88bde29f20ee73f37b2732c3.svg",
-    "static/media/linkedin.svg": "/business-management-app/static/media/linkedin.eb60e671e4d605ec98fa4cbb0e182e86.svg",
-    "static/media/facebook.svg": "/business-management-app/static/media/facebook.c5ec442f6a8a413ee0c0944d293c8b9b.svg",
-    "index.html": "/business-management-app/index.html",
-    "main.3daa298c.css.map": "/business-management-app/static/css/main.3daa298c.css.map",
-    "main.97b3154a.js.map": "/business-management-app/static/js/main.97b3154a.js.map",
-    "453.e95aa70b.chunk.js.map": "/business-management-app/static/js/453.e95aa70b.chunk.js.map"
+    "main.css": "/static/css/main.3daa298c.css",
+    "main.js": "/static/js/main.6dd1d0c1.js",
+    "static/js/453.e95aa70b.chunk.js": "/static/js/453.e95aa70b.chunk.js",
+    "static/media/twitter.svg": "/static/media/twitter.4d3c497518f671a78f72a2ecd98afeac.svg",
+    "static/media/instagram.svg": "/static/media/instagram.f6109e5b88bde29f20ee73f37b2732c3.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.eb60e671e4d605ec98fa4cbb0e182e86.svg",
+    "static/media/facebook.svg": "/static/media/facebook.c5ec442f6a8a413ee0c0944d293c8b9b.svg",
+    "index.html": "/index.html",
+    "main.3daa298c.css.map": "/static/css/main.3daa298c.css.map",
+    "main.6dd1d0c1.js.map": "/static/js/main.6dd1d0c1.js.map",
+    "453.e95aa70b.chunk.js.map": "/static/js/453.e95aa70b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3daa298c.css",
-    "static/js/main.97b3154a.js"
+    "static/js/main.6dd1d0c1.js"
   ]
 }
