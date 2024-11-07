@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
@@ -15,6 +15,8 @@ import HomeImg from "./assets/home-img.jpg";
 function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser");
@@ -31,9 +33,15 @@ function App() {
   return (
     <div className="App">
       <Navbar user={user} setUser={setUser} />
-      <div className="w-full sm:w-3/4 mx-auto py-12">
-        <img src={HomeImg} alt="Business" className=" w-full object-contain" />
-      </div>
+      {isHomePage && (
+        <div className="w-full sm:w-3/4 mx-auto py-12">
+          <img
+            src={HomeImg}
+            alt="Business"
+            className=" w-full object-contain"
+          />
+        </div>
+      )}
       <Routes>
         <Route path="/login" element={<LoginPage setUser={setUser} />} />
         <Route path="/register" element={<RegisterPage />} />
