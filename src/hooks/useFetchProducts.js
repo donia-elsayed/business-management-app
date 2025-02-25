@@ -30,7 +30,7 @@ export const useFetchProducts = () => {
     if (!products.length) {
       fetchProducts();
     }
-  }, []);
+  }, [products.length]);
 
   return { products, setProducts, error, loading };
 };
